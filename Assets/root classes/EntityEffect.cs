@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-
+[System.Serializable]
 /// <summary>
 /// Manages all active effects on an entity.
 /// </summary>

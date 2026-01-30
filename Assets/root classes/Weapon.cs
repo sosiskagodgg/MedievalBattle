@@ -1,3 +1,4 @@
+[System.Serializable]
 /// <summary>
 /// Represents a weapon with damage and duration properties.
 /// </summary>
@@ -21,4 +22,10 @@ public class Weapon
 
     public float weaponDamageCoefficient = 1f;
     public float weaponDurationCoefficient = 1f;
+
+    public Weapon(float damage,float duration)
+    {
+        _baseDamage = damage;
+        _baseDuration = duration;
+    }
 }

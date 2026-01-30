@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[System.Serializable]
 /// <summary>
 /// Handles combat-related functionality including weapons and damage dealing.
 /// </summary>
@@ -15,21 +15,13 @@ public class CombatComponent
     /// <summary>
     /// Inflicts damage on a target entity at a specific body section.
     /// </summary>
-    public void InflictDamage(Entity attacker, Entity target, BodySection bodySection, float baseDamage)
+    public void InflictDamage(Entity damager, Entity target, BodySection bodySection, float damage)
     {
-        // Calculate final damage with weapon coefficients
-        float finalDamage = baseDamage * Weapon.Damage * Weapon.weaponDamageCoefficient;
 
-        // Get random body part from target's body component
-        BodyPart targetBodyPart = target.Body.GetRandomBodyPart(bodySection);
-
-        // Calculate blood loss from the damaged body part
-        float bloodLoss = targetBodyPart.TakeDamage(finalDamage);
+        if (damager.Combat != this) throw new System.Exception("wrong entity damager");
 
         // Apply damage to target's health component
-        target.Health.TakeDamage(finalDamage, attacker, bloodLoss);
-
-        Debug.Log($"{attacker.Name} inflicted {finalDamage} damage to {target.Name}'s {targetBodyPart.name}");
+        target.Health.TakeDamage(damager,target,bodySection,damage);
     }
 }
 

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-
+[System.Serializable]
 /// <summary>
 /// Manages body parts and their organization into sections.
 /// </summary>

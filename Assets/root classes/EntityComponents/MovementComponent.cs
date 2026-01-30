@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[System.Serializable]
 /// <summary>
 /// Manages movement speed and speed modifiers.
 /// </summary>
