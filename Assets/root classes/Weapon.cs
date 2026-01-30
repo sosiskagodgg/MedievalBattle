@@ -20,12 +20,16 @@ public class Weapon
         set => _baseDuration = value;
     }
 
+    private float _hp;
+    public float Hp { get=> _hp; set=> _hp=value; }
+
     public float weaponDamageCoefficient = 1f;
     public float weaponDurationCoefficient = 1f;
 
-    public Weapon(float damage,float duration)
+    public Weapon(float damage,float duration, float hp )
     {
         _baseDamage = damage;
         _baseDuration = duration;
+        Hp = hp;
     }
 }

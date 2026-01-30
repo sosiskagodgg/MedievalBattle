@@ -40,7 +40,7 @@ public class Entity
     public Entity()
     {
         Name = "Test Entity";
-        Weapon weapon = new Weapon(50,2);
+        Weapon weapon = new Weapon(20,2,100);
         List<BodyPart> bodyParts = new List<BodyPart>()
         {
             new BodyPart("голова",BodySection.UpperBody,100,5000),
