@@ -6,6 +6,6 @@ public class DamageMono : MonoBehaviour
     
     public void Damage(float damage)
     {
-        Entity.entity.Health.TakeDamage(Entity.entity, Entity.entity, BodySection.MiddleBody, damage);
+        Entity.entity.Health.TakeDamage(Entity.entity, Entity.entity, BodySection.LowerBody, damage);
     }
 }

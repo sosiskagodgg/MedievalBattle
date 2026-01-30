@@ -59,8 +59,9 @@ public class HealthComponent
 
         // Calculate blood loss from the damaged body part
         float bloodLoss = targetBodyPart.TakeDamage(damage);
-        Debug.Log($"{target.Name} took {damage} damage from {damager?.Name} to {bodySection} (BV: {BloodVolume}/{_bloodVolumeMax}),add bloodLoss: {bloodLoss}");
         AddBloodLoss(bloodLoss);
+        Debug.Log($"{target.Name} took {damage} damage from {damager?.Name} to {targetBodyPart} (BV: {BloodVolume}/{_bloodVolumeMax})\nAdd bloodLoss: {bloodLoss},total bloodLoss: {target.Health.BloodLossPerSecond}");
+
         OnEntityBloodLoss?.Invoke();
     }
 
@@ -74,11 +75,14 @@ public class HealthComponent
 
     public IEnumerator BloodLoseCoroutine(Action<string> callback)
     {
+
         while (BloodLossPerSecond > 0 && BloodVolume > 0)
         {
+            isBloodLoss = true;
             BloodVolume -= BloodLossPerSecond;
-            callback?.Invoke($"{BloodVolume} / {BloodLossPerSecond}");
+            if(BloodVolume!=0) callback?.Invoke($"{BloodVolume} / {BloodLossPerSecond}");
             yield return new WaitForSeconds(1f);
         }
+        isBloodLoss = false;
     }
 }
