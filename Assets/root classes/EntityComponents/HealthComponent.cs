@@ -30,7 +30,7 @@ public class HealthComponent
         }
     }
 
-
+    
     private float _bloodLossPerSecond;
     public float BloodLossPerSecond { get=> _bloodLossPerSecond; private set=> _bloodLossPerSecond = value; }
     public bool isBloodLoss { get;private set;  }
